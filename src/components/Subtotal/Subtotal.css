@@ -1,0 +1,12 @@
+.subtotal {
+    border: 1px solid teal;
+    padding: 20px;
+    background-color: lightgrey;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.subtotal > button {
+    margin-top: 10px;
+}

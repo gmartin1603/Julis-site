@@ -1,0 +1,17 @@
+.home {
+    display: flex;
+    
+    margin-top: 56px;
+}
+
+.home__ads {
+    position: fixed;
+    width: 10%;
+    margin-left: 10px;
+}
+
+.home__products {
+    width: 90%;
+    margin: 25px 40px;
+    margin-left: 150px;
+}

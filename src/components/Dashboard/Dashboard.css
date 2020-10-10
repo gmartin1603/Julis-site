@@ -1,0 +1,23 @@
+.dashboard {
+    margin-top: 56px;
+    display: flex;
+    height: 100%;
+}
+
+.dashboard > form {
+    padding: 10px;
+}
+
+.dashboard__inventory {
+    padding: 10px;
+    overflow: scroll;
+    border: 1px solid purple;
+}
+
+.dashboard__product {
+    padding: 20px;
+}
+
+.dashboard__inventory::-webkit-scrollbar{
+    display: none;
+}
