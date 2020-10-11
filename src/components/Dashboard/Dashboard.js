@@ -5,7 +5,7 @@ import { useStateValue } from '../context/StateProvider';
 
 function Dashboard(props) {
 
-    const [{ products }, dispatch] = useStateValue()
+    const [{ products, category }, dispatch] = useStateValue()
 
     const [id, setId] = useState('')
     const [upId, setUpId] = useState('')
@@ -15,6 +15,8 @@ function Dashboard(props) {
     const [image, setImage] = useState('')
     const [price, setPrice] = useState(null)
     const [rating, setRating] = useState(null)
+    const [_category, setCategory] = useState(null)
+    const [variation, setVariation] = useState(null)
 
     const clearForm = () => {
         setId('')
@@ -27,14 +29,24 @@ function Dashboard(props) {
         setRating(null)
     }
 
+    const setInventory = (value) => {
+        dispatch({
+            type: 'SET_CATEGORY',
+            category: value
+        })
+    }
+
     const addProduct = (e) => {
         e.preventDefault()
-        db.collection("products").doc(id).set({
+        db.collection("products").doc(_category).collection("all").doc(id).set({
             name,
             QOH: quantity,
             img: image,
             price,
-            rating,
+            rating: Number(rating),
+            id,
+            category: _category,
+            variation,
         }).then(() => {
             console.log("document written")
             clearForm()
@@ -45,12 +57,14 @@ function Dashboard(props) {
 
     const updateQuantity = (e) => {
         e.preventDefault()
-        db.collection("products").doc(upId).set({
+        db.collection("products").doc(category).collection("all").doc(upId).update({
             QOH: upQuantity
-        }, {merge: true})
+        })
         .then(() => {
             console.log("QOH Updated")
             clearForm()
+            setInventory('blank')
+            setInventory(category)
         })
         .catch(error => alert(error))
     } 
@@ -63,6 +77,34 @@ function Dashboard(props) {
                 <div className="dashbord__input">
                 <h5>Product Id:</h5>
                 <input type="text" value={id} onChange={(e) => setId(e.target.value)} />
+                </div>
+                <div className="dashbord__input">
+                <h5>Product Catagory:</h5>
+                <select type="text" value={_category} onChange={(e) => setCategory(e.target.value)} >
+                    <option value={null}>Select</option>
+                    <option value="lingerie">Lingerie</option>
+                    <option value="beauty">Beauty</option>
+                    <option value="bath">Bath</option>
+                    <option value="games">Games</option>
+                    <option value="lubricant">Lubricant</option>
+                    <option value="gift">Gift</option>
+                    <option value="euforia">Euforia</option>
+                    <option value="vaginalHealth">Vaginal Health</option>
+                </select>
+                </div>
+                <div>
+                <h5>Product Variation:</h5>
+                <select type="text" onChange={(e) => setVariation(e.target.value)} >
+                    <option value={null}>None</option>
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                    <option value="1xl">1XL</option>
+                    <option value="2xl">2XL</option>
+                    <option value="3xl">3XL</option>
+                    <option value="4oz">4oz</option>
+                    <option value="8oz">8oz</option>
+                </select>
                 </div>
                 <div className="dashbord__input">
                 <h5>Quantity on hand:</h5>
@@ -101,6 +143,17 @@ function Dashboard(props) {
                 <button type="submit" onClick={updateQuantity}>Update Quantity</button>
             </form>
             <div className="dashboard__inventory">
+                <div className="dashbord__category">
+                <select name="category" onChange={(e)=> setInventory(e.target.value)}>
+                    <option value="beauty">Beauty</option>
+                    <option value="bath">Bath</option>
+                    <option value="euforia">Euforia</option>
+                    <option value="games">Games</option>
+                    <option value="lingerie">Lingerie</option>
+                    <option value="lubricant">Lubricant</option>
+                    <option value="vaginalHealth">Vaginal Health</option>
+                </select>
+                </div>
                 {
                     products?.map(product => 
                          (
@@ -108,8 +161,8 @@ function Dashboard(props) {
                             key={product.id}
                             calssName="dashboard__product">
                                 <h4>{product.name}</h4>
-                                <p>{product.id}</p>
-                                <p>{product.QOH}</p>
+                                <p>Id: {product.id}</p>
+                                <p>QOH: <strong>{product.QOH}</strong></p>
                             </div>
                         )
                     )

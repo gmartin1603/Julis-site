@@ -6,6 +6,13 @@ function CheckOut(props) {
 
     const [{cart}, dispatch] = useStateValue()
 
+    const removeFromCart = (id) => {
+        dispatch({
+            type: 'REMOVE_FROM_CART',
+            id: id
+        })
+    }
+
     return (
         <div className="checkOut">
             <div className="checkOut__info">
@@ -33,7 +40,7 @@ function CheckOut(props) {
                                 ${item.price}
                             </h6>
                             </span>
-                            <button>Remove from Order</button>
+                            <button onClick={() => removeFromCart(item.id)}>Remove from Order</button>
                         </div>
                     ))
                 }

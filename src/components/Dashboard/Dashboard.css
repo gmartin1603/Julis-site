@@ -2,6 +2,7 @@
     margin-top: 56px;
     display: flex;
     height: 100%;
+    justify-content: center;
 }
 
 .dashboard > form {
@@ -9,9 +10,14 @@
 }
 
 .dashboard__inventory {
+    width: 200px;
     padding: 10px;
     overflow: scroll;
     border: 1px solid purple;
+}
+
+.dashboard__category {
+    position: fixed;
 }
 
 .dashboard__product {

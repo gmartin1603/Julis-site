@@ -2,9 +2,10 @@ import React from 'react';
 import './Product.css'
 import {useStateValue} from '../context/StateProvider'
 
-function Product({title, image, rating, price, id}) {
+function Product({title, image, rating, price, id, qoh}) {
 
-    const [state, dispatch] = useStateValue()
+    const [{ }, dispatch] = useStateValue()
+
 
     const addToCart = () => {
         dispatch({
@@ -27,10 +28,10 @@ function Product({title, image, rating, price, id}) {
             alt={title}
             />
            </div>
+           <div className="spacer"/>
            <div className="product__title">
                <h5>{title}</h5>
            </div>
-           <div className="spacer"/>
            <div className="product__rating">
           {Array(rating)
             .fill()

@@ -1,4 +1,18 @@
 .products {
+    
+}
+
+.products__category {
+    position: fixed;
+    top: 56px;
+    padding: 10px;
+    background: linear-gradient(teal,teal, transparent);
+    width: 100%;
+    border-bottom-left-radius: 20px;
+}
+
+.products__items {
     display: flex;
     flex-wrap: wrap;
+    margin-top: 60px;
 }

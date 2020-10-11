@@ -1,7 +1,7 @@
 .side__drawer {
     height: 100%;
     width: 50%;
-    max-width: 200px;
+    max-width: 150px;
     min-width: 110px;
     background-color: whitesmoke;
     box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
@@ -11,21 +11,25 @@
     z-index: 200;
     transform: translateX(-100%);
     transition: transform 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .side__drawer.open {
     transform: translateX(0);
 }
 
-.side__drawer.open ul {
+.side__drawer.open {
     height: 100%;
     list-style: none;
     display: flex;
     flex-direction: column;
+    align-items: center;
     
 }
 
-.side__drawer li {
+.side__drawer > a {
     margin: 0.5rem 0;
 }
 

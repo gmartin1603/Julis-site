@@ -19,7 +19,7 @@ function App() {
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [cartOpen, setCartOpen] = useState(false)
 
-  const [{cart, isAdmin}, dispatch] = useStateValue()
+  const [{cart, isAdmin, category}, dispatch] = useStateValue()
 
   let products = []
 
@@ -48,7 +48,7 @@ function App() {
   }, [isAdmin])
 
   useEffect(() => {
-    db.collection("products").get().then((querySnapshot) => {
+    db.collection("products").doc(category).collection("all").get().then((querySnapshot) => {
       querySnapshot.forEach(doc => {
         products.push(doc.data())
         dispatch({
@@ -57,7 +57,7 @@ function App() {
         })
       })
     })
-  }, [])
+  }, [category])
   
   const handleDrawerClick = () => {
     setDrawerOpen(!drawerOpen)
@@ -76,6 +76,7 @@ function App() {
   }
   const logOut = () => {
     auth.signOut()
+    setDrawerOpen(false)
     console.log("logged out")
   }
 
@@ -94,6 +95,7 @@ function App() {
           <SideDrawer
           logOut={logOut} 
           show={drawerOpen}
+          click={backDropClick}
           />
           {backDrop}
           <Cart/>
@@ -107,6 +109,7 @@ function App() {
           <SideDrawer
           logOut={logOut} 
           show={drawerOpen}
+          click={backDropClick}
           />
           {backDrop}
           <CheckOut/>
@@ -123,6 +126,7 @@ function App() {
           <SideDrawer
           logOut={logOut} 
           show={drawerOpen}
+          click={backDropClick}
           />
           {backDrop}
           <Dashboard/> 
@@ -136,6 +140,7 @@ function App() {
           <SideDrawer
           logOut={logOut} 
           show={drawerOpen}
+          click={backDropClick}
           />
           {backDrop}
           <Home/> 
