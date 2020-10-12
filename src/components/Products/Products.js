@@ -35,6 +35,7 @@ function Products(props) {
             {
                 products?.map(item => (
                     <Product
+                    key={item.id}
                     id={item.id}
                     title={item.name}
                     image={item.img}

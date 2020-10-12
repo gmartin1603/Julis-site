@@ -11,7 +11,7 @@
 }
 
 .spacer {
-    
+    flex: 1;
 }
 
 .product__title {
@@ -39,4 +39,7 @@
     background-color: hotpink;
     border-color: hotpink, teal, purple;
     outline: none;
+    color: whitesmoke;
+    font-weight: 600;
+    border-radius: 20px;
 }

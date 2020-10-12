@@ -40,9 +40,9 @@ function Dashboard(props) {
         e.preventDefault()
         db.collection("products").doc(_category).collection("all").doc(id).set({
             name,
-            QOH: quantity,
+            QOH: Number(quantity),
             img: image,
-            price,
+            price: Number(price),
             rating: Number(rating),
             id,
             category: _category,

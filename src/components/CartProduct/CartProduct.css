@@ -9,8 +9,23 @@
     height: 320px;
 }
 
+.cartProduct > button {
+    background-color: hotpink;
+    color: whitesmoke;
+    font-weight: 600;
+    border-radius: 20px;
+    border-color: hotpink, teal, purple;
+    outline: none;
+}
+
 .cartProduct__title {
     max-width: 150px;
+    text-align: center;
+}
+
+.cartProduct__image {
+    display: flex;
+    justify-content: center;
 }
 
 .cartProduct__image > img {

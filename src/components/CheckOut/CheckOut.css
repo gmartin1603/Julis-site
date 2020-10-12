@@ -5,14 +5,25 @@
 }
 
 .checkOut__info {
-    margin-top: 56px;
+    margin-top: 70px;
+    margin-left: 30px;
+    padding: 10px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid teal;
+    background: radial-gradient(#111, teal);
+    color: whitesmoke;
+}
+
+.checkOut__paypal {
+    margin-top: 20px;
 }
 
 .checkOut__form {
     width: 170px;
     padding: 20px;
-    margin: 30px;
-    border: 1px solid teal;
 }
 
 .checkOut__products {
@@ -38,4 +49,13 @@
     width: 50%;
     margin: 10px;
     padding: 10px;
+}
+
+.item > button {
+    background-color: hotpink;
+    color: whitesmoke;
+    font-weight: 600;
+    border-radius: 20px;
+    border-color: hotpink, teal, purple;
+    outline: none;
 }

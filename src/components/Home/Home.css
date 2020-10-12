@@ -6,6 +6,7 @@
 
 .home__ads {
     position: fixed;
+    top: 150px;
     width: 10%;
     margin-left: 10px;
 }

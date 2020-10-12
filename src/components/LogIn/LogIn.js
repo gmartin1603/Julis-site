@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './LogIn.css'
-import {db, auth} from '../firebase/firebase'
+import {auth} from '../firebase/firebase'
 import { useStateValue } from '../context/StateProvider';
 import {useHistory} from 'react-router-dom'
 

@@ -11,6 +11,7 @@ import LogIn from './LogIn/LogIn';
 import Dashboard from './Dashboard/Dashboard'
 import {auth, db} from './firebase/firebase'
 import CheckOut from './CheckOut/CheckOut';
+import Orders from './Orders/Orders';
 
 
 function App() {
@@ -99,6 +100,20 @@ function App() {
           />
           {backDrop}
           <Cart/>
+        </Route>
+        <Route exact path="/Orders">
+          <ToolBar 
+          logOut={logOut}
+          handleDrawerClick={handleDrawerClick}
+          handleCartClick={handleCartClick}
+          />
+          <SideDrawer
+          logOut={logOut} 
+          show={drawerOpen}
+          click={backDropClick}
+          />
+          {backDrop}
+          <Orders/>
         </Route>
         <Route exact path="/CheckOut">
           <ToolBar 
